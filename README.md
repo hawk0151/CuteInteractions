@@ -11,7 +11,7 @@ Made by **tyhawkey**.
 
 ## Installation
 
-1. Download `CuteInteractions-2.1.0.jar` from the [releases page](https://github.com/tyhawkey/CuteInteractions/releases).
+1. Download `CuteInteractions-2.1.0.jar` from the [releases page](https://github.com/hawk0151/CuteInteractions/releases).
 2. Place the JAR in your server's `plugins/` folder.
 3. Restart the server (or use a plugin load command if your setup supports it).
 4. Edit `plugins/CuteInteractions/config.yml` to customise messages, cooldowns, sounds, and particles.
