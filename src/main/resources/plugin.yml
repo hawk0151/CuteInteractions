@@ -1,0 +1,90 @@
+name: CuteInteractions
+version: ${project.version}
+main: com.cuteinteractions.CuteInteractionsPlugin
+api-version: '26.1'
+author: tyhawkey
+description: Cute social interaction commands for Paper and Purpur servers.
+
+commands:
+  cuteinteractions:
+    description: Manage CuteInteractions settings and admin tools.
+    usage: /cuteinteractions <toggle|reload|inspect|cooldown|mute|audit>
+    aliases: [ci]
+  hug:
+    description: Hug another player.
+    usage: /hug <player>
+  kiss:
+    description: Kiss another player.
+    usage: /kiss <player>
+  slap:
+    description: Slap another player.
+    usage: /slap <player>
+  pat:
+    description: Pat another player.
+    usage: /pat <player>
+  boop:
+    description: Boop another player.
+    usage: /boop <player>
+
+permissions:
+  cuteinteractions.toggle:
+    description: Allows players to toggle whether they receive interactions.
+    default: true
+  cuteinteractions.command.hug:
+    description: Allows /hug.
+    default: true
+  cuteinteractions.command.kiss:
+    description: Allows /kiss.
+    default: true
+  cuteinteractions.command.slap:
+    description: Allows /slap.
+    default: true
+  cuteinteractions.command.pat:
+    description: Allows /pat.
+    default: true
+  cuteinteractions.command.boop:
+    description: Allows /boop.
+    default: true
+  cuteinteractions.cooldown.bypass:
+    description: Bypasses CuteInteractions command cooldowns.
+    default: op
+  cuteinteractions.admin.reload:
+    description: Allows reloading CuteInteractions.
+    default: op
+  cuteinteractions.admin.inspect:
+    description: Allows inspecting player state.
+    default: op
+  cuteinteractions.admin.toggle:
+    description: Allows changing another player's incoming interaction setting.
+    default: op
+  cuteinteractions.admin.cooldown:
+    description: Allows clearing player cooldowns.
+    default: op
+  cuteinteractions.admin.mute:
+    description: Allows muting players from using interaction commands.
+    default: op
+  cuteinteractions.admin.audit:
+    description: Allows viewing recent CuteInteractions audit entries.
+    default: op
+  cuteinteractions.admin.*:
+    description: Grants every CuteInteractions admin permission.
+    default: op
+    children:
+      cuteinteractions.admin.reload: true
+      cuteinteractions.admin.inspect: true
+      cuteinteractions.admin.toggle: true
+      cuteinteractions.admin.cooldown: true
+      cuteinteractions.admin.mute: true
+      cuteinteractions.admin.audit: true
+  cuteinteractions.*:
+    description: Grants every CuteInteractions permission.
+    default: op
+    children:
+      cuteinteractions.toggle: true
+      cuteinteractions.command.hug: true
+      cuteinteractions.command.kiss: true
+      cuteinteractions.command.slap: true
+      cuteinteractions.command.pat: true
+      cuteinteractions.command.boop: true
+      cuteinteractions.cooldown.bypass: true
+      cuteinteractions.admin.*: true

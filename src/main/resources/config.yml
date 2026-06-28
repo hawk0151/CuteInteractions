@@ -1,0 +1,87 @@
+audit:
+  recent-cache-size: 200
+
+moderation:
+  muted-players-can-receive: true
+
+messages:
+  prefix: "&d&lCuteInteractions &8>> &r"
+  player-only: "&cOnly players can use this command."
+  no-permission: "&cYou do not have permission. Required: &f%permission%"
+  interaction-usage: "&cUsage: /%command% <player>"
+  admin-usage: "&cUsage: /ci <help|toggle|reload|inspect|cooldown|mute|audit|version>"
+  unknown-command: "&cUnknown CuteInteractions command. Use &f/ci help&c."
+  usage-toggle-admin: "&cUsage: /ci toggle <player> <on|off>"
+  usage-inspect: "&cUsage: /ci inspect <player>"
+  usage-cooldown: "&cUsage: /ci cooldown clear <player> [action|all]"
+  usage-mute: "&cUsage: /ci mute <player> <duration|off>"
+  usage-audit: "&cUsage: /ci audit [player] [page]"
+  player-not-found: "&cThat player is not online."
+  unknown-player: "&cThat player has not joined before."
+  no-self-target: "&cYou cannot use this on yourself."
+  cooldown: "&cPlease wait &f%seconds%s &cbefore using &f/%action% &cagain."
+  target-disabled: "&f%target% &chas disabled incoming interactions."
+  sender-muted: "&cYou are muted from using CuteInteractions for &f%time%&c."
+  target-muted: "&f%target% &cis currently muted from CuteInteractions."
+  toggle-enabled: "&aYou can now receive CuteInteractions."
+  toggle-disabled: "&cYou will no longer receive CuteInteractions."
+  admin-toggle-enabled: "&a%player% can now receive CuteInteractions."
+  admin-toggle-disabled: "&c%player% can no longer receive CuteInteractions."
+  reload: "&aCuteInteractions reloaded."
+  version: "&aCuteInteractions &f%version% &7| API: &f%api% &7| Java &f21"
+  cooldown-cleared: "&aCleared cooldowns for %player%."
+  muted: "&c%player% is now muted from CuteInteractions for %time%."
+  unmuted: "&a%player% is no longer muted from CuteInteractions."
+  inspect: "&d%player% &7| incoming: &f%incoming% &7| muted: &f%muted% &7| cooldowns: &f%cooldowns%"
+  audit-empty: "&7No audit entries found."
+  audit-header: "&dCuteInteractions audit &7(page %page%/%pages%)"
+  audit-line: "&7[%time%] &f%sender% &7-> &f%target% &d/%action% &7%result% &8%reason%"
+  invalid-action: "&cUnknown action. Use hug, kiss, slap, pat, boop, or all."
+  invalid-duration: "&cInvalid duration. Use examples like 10m, 2h, 1d, or off."
+  internal-error: "&cCuteInteractions hit a safe error. The action was cancelled and staff should check console."
+  help-header: "&dCuteInteractions commands:"
+  help-line-toggle: "&f/ci toggle &7- Toggle whether others can use interactions on you."
+  help-line-interactions: "&f/hug, /kiss, /slap, /pat, /boop <player> &7- Use an interaction."
+  help-line-admin: "&f/ci reload, inspect, toggle, cooldown, mute, audit, version &7- Admin tools."
+
+interactions:
+  hug:
+    cooldown-seconds: 10
+    broadcast: "&d%sender% &fwraps &d%target% &fin a warm hug!"
+    sound: ENTITY_PLAYER_LEVELUP
+    sound-volume: 0.7
+    sound-pitch: 1.8
+    particle: HEART
+    particle-count: 8
+  kiss:
+    cooldown-seconds: 10
+    broadcast: "&d%sender% &fblows a sweet kiss to &d%target%&f!"
+    sound: ENTITY_PLAYER_LEVELUP
+    sound-volume: 0.8
+    sound-pitch: 2.0
+    particle: HEART
+    particle-count: 12
+  slap:
+    cooldown-seconds: 15
+    broadcast: "&d%sender% &fslaps &d%target% &fwith dramatic flair!"
+    sound: ENTITY_PLAYER_ATTACK_KNOCKBACK
+    sound-volume: 0.8
+    sound-pitch: 1.1
+    particle: CRIT
+    particle-count: 18
+  pat:
+    cooldown-seconds: 8
+    broadcast: "&d%sender% &fgently pats &d%target%&f."
+    sound: BLOCK_NOTE_BLOCK_CHIME
+    sound-volume: 0.7
+    sound-pitch: 1.6
+    particle: HAPPY_VILLAGER
+    particle-count: 10
+  boop:
+    cooldown-seconds: 8
+    broadcast: "&d%sender% &fboops &d%target% &fon the nose!"
+    sound: ENTITY_CHICKEN_EGG
+    sound-volume: 0.8
+    sound-pitch: 1.7
+    particle: END_ROD
+    particle-count: 10

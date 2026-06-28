@@ -1,0 +1,13 @@
+target/
+lib/
+
+.idea/
+*.iml
+.vscode/
+
+.DS_Store
+Thumbs.db
+
+*.log
+player-data.yml
+/audit/
