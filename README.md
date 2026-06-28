@@ -81,6 +81,8 @@ Sound names use Minecraft registry IDs (for example `ENTITY_PLAYER_LEVELUP`). Pa
 
 ## Build from source
 
+Requires **JDK 25+** to compile (Paper API dependency). The plugin itself still targets **Java 21** bytecode for server compatibility.
+
 ```bash
 mvn clean package
 ```
