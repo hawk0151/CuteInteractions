@@ -90,16 +90,41 @@ public final class ConfigService {
         if (value == null || value.isBlank()) {
             return fallback;
         }
-        String normalized = value.toLowerCase(Locale.ROOT);
-        NamespacedKey key = normalized.contains(":")
-                ? NamespacedKey.fromString(normalized)
-                : NamespacedKey.minecraft(normalized.replace('_', '.'));
-        Sound sound = key == null ? null : Registry.SOUNDS.get(key);
+        Sound sound = resolveSound(value.trim());
         if (sound == null) {
             plugin.getLogger().warning("Invalid Sound in config: " + value + ". Using fallback sound.");
             return fallback;
         }
         return sound;
+    }
+
+    private Sound resolveSound(String value) {
+        // Preferred form: a namespaced key such as "minecraft:block.note_block.chime"
+        // or "block.note_block.chime". Parse it directly without mangling underscores.
+        String lower = value.toLowerCase(Locale.ROOT);
+        if (lower.indexOf(':') >= 0 || lower.indexOf('.') >= 0) {
+            NamespacedKey key = lower.indexOf(':') >= 0
+                    ? NamespacedKey.fromString(lower)
+                    : NamespacedKey.minecraft(lower);
+            Sound sound = key == null ? null : Registry.SOUNDS.get(key);
+            if (sound != null) {
+                return sound;
+            }
+        }
+        // Legacy enum-style name such as "BLOCK_NOTE_BLOCK_CHIME". There is no reliable
+        // string transform (underscores are ambiguous, e.g. "note_block"), so reverse-match
+        // against the registry: key "block.note_block.chime" -> "BLOCK_NOTE_BLOCK_CHIME".
+        String legacy = value.toUpperCase(Locale.ROOT);
+        for (Sound sound : Registry.SOUNDS) {
+            String asLegacy = sound.getKey().getKey()
+                    .toUpperCase(Locale.ROOT)
+                    .replace('.', '_')
+                    .replace('/', '_');
+            if (asLegacy.equals(legacy)) {
+                return sound;
+            }
+        }
+        return null;
     }
 
     private Particle particleValue(String value, Particle fallback) {
